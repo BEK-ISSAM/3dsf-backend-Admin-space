@@ -25,5 +25,6 @@ public class Assignment {
     private Course course;
 
     @OneToMany(mappedBy = "assignment")
+
     private Set<Grade> grades;
 }

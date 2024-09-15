@@ -1,5 +1,6 @@
 package com._DSF.je.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,9 +32,11 @@ public class Course {
     private Set<Assignment> assignments;
 
     @OneToMany(mappedBy = "course")
+    @JsonManagedReference
     private Set<Quiz> quizzes;
 
     @OneToMany(mappedBy = "course")
+    @JsonManagedReference
     private Set<Video> videos;
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -48,5 +51,6 @@ public class Course {
     private double price;
     private String description;
     @OneToMany(mappedBy = "course")
+    @JsonManagedReference
     private Set<FAQ> faqs;
 }

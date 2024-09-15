@@ -1,5 +1,6 @@
 package com._DSF.je.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,10 +19,12 @@ public class Qcm {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
+    @JsonBackReference
     private Quiz quiz;
 
     @OneToOne
     @JoinColumn(name = "grade_id")
+    @JsonBackReference
     private Grade grade;
 }
 

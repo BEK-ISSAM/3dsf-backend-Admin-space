@@ -52,7 +52,7 @@ public class QcmService {
     // Method to create a QCM
     public Qcm createQCM(Qcm qcm) {
         // Fetch the Grade by gradeId from the database
-        Optional<Grade> grade = gradeRepository.findById(qcm.getGrade().getId());
+       /*Optional<Grade> grade = gradeRepository.findById(qcm.getGrade().getId());
         if (grade.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Grade not found");
         }
@@ -65,7 +65,7 @@ public class QcmService {
 
         // Set the Grade and Quiz in the QCM entity
         qcm.setGrade(grade.get());
-        qcm.setQuiz(quiz.get());
+        qcm.setQuiz(quiz.get());*/
 
         // Save and return the QCM entity
         return qcmRepository.save(qcm);

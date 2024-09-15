@@ -86,4 +86,8 @@ public class CourseService {
         return courseRepository.filterByPrice(minPrice, maxPrice, sort);
 
     }
+    public List<Course> getCoursesByTeacher(Long teacherId) {
+        return courseRepository.findByTeacherId(teacherId);
+    }
+
 }

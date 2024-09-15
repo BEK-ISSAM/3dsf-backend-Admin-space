@@ -92,4 +92,11 @@ public class CourseController {
         List<Course> courses = courseService.filterByPrice(minPrice, maxPrice, sortOrder);
         return ResponseEntity.ok(courses);
     }
+    // Add this method to CourseController
+    @GetMapping("/teacher/{teacherId}")
+    public ResponseEntity<List<Course>> getCoursesByTeacher(@PathVariable Long teacherId) {
+        List<Course> courses = courseService.getCoursesByTeacher(teacherId);
+        return ResponseEntity.ok(courses);
+    }
+
 }

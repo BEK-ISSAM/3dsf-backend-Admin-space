@@ -29,6 +29,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     @JsonIgnore // Avoid serialization issues
+
     private Set<Course> courses;
 
     @OneToMany(mappedBy = "teacher")

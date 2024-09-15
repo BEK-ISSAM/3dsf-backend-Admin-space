@@ -24,5 +24,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> filterByPrice(@Param("minPrice") Double minPrice,
                                @Param("maxPrice") Double maxPrice,
                                Sort sort);
+
+    List<Course> findByTeacherId(Long teacherId);
 }
 

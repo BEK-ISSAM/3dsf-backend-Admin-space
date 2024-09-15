@@ -1,5 +1,7 @@
 package com._DSF.je.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Set;
@@ -18,8 +20,10 @@ public class Quiz {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
+    @JsonBackReference
     private Course course;
 
     @OneToMany(mappedBy = "quiz")
+    @JsonManagedReference
     private Set<Grade> grades;
 }

@@ -26,5 +26,11 @@ public class Qcm {
     @JoinColumn(name = "grade_id")
     @JsonBackReference
     private Grade grade;
-}
 
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] imageData;
+
+    private String imageName;
+    private String imageType;
+}

@@ -19,12 +19,17 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public Course createCourse(Course course, MultipartFile pdfFile) throws IOException {
+    public Course createCourse(Course course, MultipartFile pdfFile, MultipartFile thumbnail) throws IOException {
         if (pdfFile != null && !pdfFile.isEmpty()) {
             course.setPdfName(pdfFile.getOriginalFilename());
             course.setPdfType(pdfFile.getContentType());
             course.setPdfData(pdfFile.getBytes());
         }
+
+        if (thumbnail != null && !thumbnail.isEmpty()) {
+            course.setThumbnail(thumbnail.getBytes());
+        }
+
         return courseRepository.save(course);
     }
 

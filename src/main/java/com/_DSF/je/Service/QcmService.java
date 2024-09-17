@@ -8,8 +8,10 @@ import com._DSF.je.Repository.QcmRepository;
 import com._DSF.je.Repository.QuizRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Service
@@ -50,24 +52,27 @@ public class QcmService {
     }
 
     // Method to create a QCM
-    public Qcm createQCM(Qcm qcm) {
-        // Fetch the Grade by gradeId from the database
-       /*Optional<Grade> grade = gradeRepository.findById(qcm.getGrade().getId());
-        if (grade.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Grade not found");
-        }
 
+    public Qcm createQCM(Qcm qcm, MultipartFile imageFile) throws IOException {
         // Fetch the Quiz by quizId from the database
         Optional<Quiz> quiz = quizRepository.findById(qcm.getQuiz().getId());
         if (quiz.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Quiz not found");
         }
 
-        // Set the Grade and Quiz in the QCM entity
-        qcm.setGrade(grade.get());
-        qcm.setQuiz(quiz.get());*/
+        // Set the Quiz in the QCM entity
+        qcm.setQuiz(quiz.get());
+
+        // Handle the image file if provided
+        if (imageFile != null && !imageFile.isEmpty()) {
+            qcm.setImageName(imageFile.getOriginalFilename());
+            qcm.setImageType(imageFile.getContentType());
+            qcm.setImageData(imageFile.getBytes());
+        }
 
         // Save and return the QCM entity
         return qcmRepository.save(qcm);
     }
+
+
 }

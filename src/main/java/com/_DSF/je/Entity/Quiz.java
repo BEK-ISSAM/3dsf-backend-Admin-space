@@ -23,7 +23,4 @@ public class Quiz {
     @JsonBackReference
     private Course course;
 
-    @OneToMany(mappedBy = "quiz")
-    @JsonManagedReference
-    private Set<Grade> grades;
 }

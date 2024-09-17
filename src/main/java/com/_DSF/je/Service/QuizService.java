@@ -12,7 +12,6 @@ import java.util.Optional;
 public class QuizService {
 
     private final QuizRepository quizRepository;
-
     private final CourseRepository courseRepository;
 
     public QuizService(QuizRepository quizRepository, CourseRepository courseRepository) {

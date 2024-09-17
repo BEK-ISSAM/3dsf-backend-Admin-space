@@ -53,4 +53,8 @@ public class Course {
     @OneToMany(mappedBy = "course")
     @JsonManagedReference
     private Set<FAQ> faqs;
+
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] thumbnail;
 }
